@@ -8,7 +8,7 @@ st.title("Car Listings Analysis")
 
 # Checkbox for selecting models
 selected_models = []
-for model in models:
+for model in model:
     if st.checkbox(model, key=model):
         selected_models.append(model)
 
@@ -33,4 +33,3 @@ else:
     st.write("No data to display. Select at least one model.")
 
     # comparing the time listed by condition with a checkbox for selecting the models
-    
