@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 
-df = pd.read_csv("vehicles.csv")
+df = pd.read_csv('vehicles_us.csv')
 
 st.title("Car Listings Analysis")
 
@@ -31,3 +31,6 @@ if not filtered_df.empty:
     st.pyplot(fig)
 else:
     st.write("No data to display. Select at least one model.")
+
+    # comparing the time listed by condition with a checkbox for selecting the models
+    
