@@ -4,11 +4,13 @@ import plotly.express as px
 
 df = pd.read_csv('vehicles_us.csv')
 
+models = df['model'].unique()
+
 st.title("Car Listings Analysis")
 
 # Checkbox for selecting models
 selected_models = []
-for model in model:
+for model in models:
     if st.checkbox(model, key=model):
         selected_models.append(model)
 
