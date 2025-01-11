@@ -36,3 +36,35 @@ else:
     st.write("No data to display. Select at least one model.")
 
     # comparing the time listed by condition with a checkbox for selecting the models
+
+st.header("Car type vs Color")
+
+# Dropdown for paint color
+paint_color = st.selectbox(
+    "Select Paint Color",
+    options=df['paint_color'].unique(),
+    index=0
+)
+
+# Dropdown for car type
+car_type = st.selectbox(
+    "Select Car Type",
+    options=df['type'].unique(),
+    index=0
+)
+
+# Filter data based on the selections
+filtered_df = df[(df['paint_color'] == paint_color) & (df['type'] == car_type)]
+
+# Plot histogram
+st.subheader(f"Histogram of Days Listed for {paint_color} {car_type}s")
+if not filtered_df.empty:
+    fig, ax = plt.subplots()
+    ax.hist(filtered_df['days_listed'], bins=10, color='skyblue', edgecolor='black')
+    ax.set_xlabel("Days Listed")
+    ax.set_ylabel("Frequency")
+    ax.set_title(f"Days Listed for {paint_color} {car_type}s")
+    st.pyplot(fig)
+else:
+    st.write("No data available for the selected combination.")
+    
