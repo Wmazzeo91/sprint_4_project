@@ -69,17 +69,20 @@ else:
     st.write("No data available for the selected combination.")
 
 
-# Create scatterplot
+# Title for the Streamlit app
+st.title("Car Price vs. Model Scatterplot")
+
+# Create the scatterplot using Plotly Express
 fig = px.scatter(
     df,
     x='model',
     y='price',
     title="Car Price vs. Model",
-    labels={'model': 'Model', 'price': 'Price (in USD)'},
+    labels={'model': 'Car Model', 'price': 'Price (in USD)'},
     template='plotly',
 )
 
-# Customize the layout
+# Customize the scatterplot
 fig.update_traces(marker=dict(size=12, color='blue', line=dict(width=1, color='black')))
 fig.update_layout(
     title_font_size=18,
@@ -90,5 +93,5 @@ fig.update_layout(
     yaxis_tickfont=dict(size=12),
 )
 
-# Show the plot
-fig.show()
+# Display the plot in the Streamlit app
+st.plotly_chart(fig, use_container_width=True)
