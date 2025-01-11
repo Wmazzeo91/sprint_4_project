@@ -69,16 +69,26 @@ else:
     st.write("No data available for the selected combination.")
 
 
-plt.figure(figsize=(10, 6))
-plt.scatter(df['model'], df['price'], color='blue', alpha=0.7, edgecolors='black')
+# Create scatterplot
+fig = px.scatter(
+    df,
+    x='model',
+    y='price',
+    title="Car Price vs. Model",
+    labels={'model': 'Model', 'price': 'Price (in USD)'},
+    template='plotly',
+)
 
-# Customize the plot
-plt.title("Car Price vs. Model", fontsize=16)
-plt.xlabel("Model", fontsize=14)
-plt.ylabel("Price (in USD)", fontsize=14)
-plt.xticks(rotation=45, ha="right", fontsize=10)
-plt.grid(axis='y', linestyle='--', alpha=0.7)
+# Customize the layout
+fig.update_traces(marker=dict(size=12, color='blue', line=dict(width=1, color='black')))
+fig.update_layout(
+    title_font_size=18,
+    xaxis_title="Car Model",
+    yaxis_title="Price (in USD)",
+    xaxis_tickangle=45,
+    xaxis_tickfont=dict(size=10),
+    yaxis_tickfont=dict(size=12),
+)
 
 # Show the plot
-plt.tight_layout()
-plt.show()
+fig.show()
