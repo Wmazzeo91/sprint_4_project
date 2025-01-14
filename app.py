@@ -7,13 +7,9 @@ df = pd.read_csv('vehicles_us.csv')
 
 models = df['model'].unique()
 
-st.title("Car Listings Analysis")
-
-# Checkbox for selecting models
-selected_models = []
-for model in models:
-    if st.checkbox(model, key=model):
-        selected_models.append(model)
+# Multiselect for selecting models
+models = df['model'].unique()
+selected_models = st.multiselect("Select car models", models)
 
 # Filter DataFrame based on selected models
 if selected_models:
